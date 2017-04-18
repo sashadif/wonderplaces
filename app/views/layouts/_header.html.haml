@@ -1,0 +1,28 @@
+%nav.navbar.navbar-toggleable-md.fixed-top.navbar-light.bg-faded
+  %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  = link_to 'WonderPlaces', root_path, class: 'navbar-brand page-scroll'
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.left
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          Home
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "#"} How it works
+      %li.nav-item
+        %a.nav-link{:href => "#"} Search
+      -if user_signed_in? 
+        %li.nav-item.nav-link 
+          Logged in as
+          %strong= current_user.email
+        %li.nav-item
+          = link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link'
+      -else
+        %li.nav-item
+          = link_to "Sign up", new_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Sign in", new_user_session_path, class: 'nav-link'
+

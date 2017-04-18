@@ -1,0 +1,64 @@
+%section.promo
+  .main-search-wrap
+    .main-search
+      .search-ttl.intro-text
+        .intro-lead-in
+          Welcome to the Wonder Places!
+        .intro-heading
+          It's nice to meet you
+      .to-bottom
+        %span How it work
+        %a.to-bott-btn{:href => "#how-use-sect"}
+%section#how-use-sect.how-use
+  .container
+    %h2 HOW TO USE SERVICE
+    .step-wrap
+      .step-list
+        .step-item
+          %span.count STEP 1
+          .step-name
+            = image_tag 'svg/choose-service.svg', alt: ''
+            %h3 Choose a place
+          %ul
+            %li.step-option
+              = image_tag 'svg/chat.svg', alt: ''
+              %p Choose a city and a category
+            %li.step-option
+              = image_tag 'svg/shape.svg', alt: ''
+              %p Search places and see results on map
+        .step-item
+          %span.count STEP 2
+          .step-name
+            = image_tag 'svg/price-tag.svg', alt: ''
+            %h3 See info
+          %ul
+            %li.step-option
+              = image_tag 'svg/piggy-bank.svg', alt: ''
+              %p See reviews and photos.
+            %li.step-option
+              = image_tag 'svg/layer-1.svg', alt: ''
+              %p See customer reviews
+        .step-item
+          %span.count STEP 3
+          .step-name
+            = image_tag 'svg/path.svg', alt: ''
+            %h3 Add to your wishlist
+          %ul
+            %li.step-option
+              = image_tag 'svg/quality.svg', alt: ''
+              %p Add place to the list of places you want to visit
+            %li.step-option
+              = image_tag 'svg/support.svg', alt: ''
+              %p Add place to the list of places you've already visited
+            %li.step-option
+%section.choose-place
+  .container
+    %h2 What service are you looking for ?
+    .search-wrap
+      %form#main-search-form{:action => "service-list.html"}
+        .search-area
+          .icon
+            %input#service-name{:name => "service-name", :placeholder => "Place name", :type => "text"}
+          %input.main-find-btn{:type => "submit", :value => "Find place!"}
+%section#main-map
+  #car-services-map.map
