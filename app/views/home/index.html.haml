@@ -1,7 +1,7 @@
 %section.promo
-  .main-search-wrap
-    .main-search
-      .search-ttl.intro-text
+  .main-wrap
+    .main
+      .intro-text
         .intro-lead-in
           Welcome to the Wonder Places!
         .intro-heading
@@ -53,12 +53,11 @@
             %li.step-option
 %section.choose-place
   .container
-    %h2 What service are you looking for ?
+    %h2 What place are you looking for ?
     .search-wrap
-      %form#main-search-form{:action => "service-list.html"}
+      %form#main-search-form
         .search-area
-          .icon
-            %input#service-name{:name => "service-name", :placeholder => "Place name", :type => "text"}
+          %input#place-name{:name => "place-name", :placeholder => "Place name", :type => "text"}
           %input.main-find-btn{:type => "submit", :value => "Find place!"}
 %section#main-map
   #car-services-map.map

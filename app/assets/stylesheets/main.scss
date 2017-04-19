@@ -229,7 +229,7 @@ header.header{
         margin-bottom: 25px;
     }
   }
-  .main-search-wrap {
+  .main-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -364,14 +364,42 @@ header.header{
   padding-top: 70px;
   padding-bottom: 43px;
   background-color: #f5f4f4;
+  justify-content: center;
+  align-items: center;
   .search-wrap {
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 82px;
+    text-align: center;
+    margin: auto;
     height: 420px;
+    justify-content: center;
+    align-items: center;
+    .search-area{
+      position: relative;
+      display: flex;
+      width: 580px;
+      height: 48px;
+      margin: auto;
+      input#place-name{
+        width: 100%;
+        height: 100%;
+        padding: 15px 0 15px 15px;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        border: none;
+      }
+      .main-find-btn{
+        width: 120px;
+        height: 48px;
+        font: 14px $primary-font-bold;
+        color: white;
+        background-color: $theme-primary;
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+        border: none;
+      }
+    }
   }
     .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
       width: 5px;
@@ -380,7 +408,6 @@ header.header{
     .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical {
       margin: 0 0 20px;
     }
-
 }
 #main-map {
   height: 430px;
@@ -463,14 +490,12 @@ header.header{
     .foot-cont-item {
       position: relative;
       padding-left: 30px;
-      
       p {
         font: 12px $primary-font-semibold;
         line-height: 2.67;
         opacity: 0.5;
         letter-spacing: -0.1px;
         color: #fff;
-        margin-bottom: 0px;
       }
       &.phone {
         background: image-url('svg/phone-call.svg') 0px center no-repeat;
