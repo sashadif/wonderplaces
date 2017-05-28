@@ -1,0 +1,20 @@
+%section.choose-place
+  .container
+    .station-main.container
+      .profile-main
+        .station-info.p-flex-item
+          .main-info.clearfix
+            .logo-block
+              = image_tag @place.avatars[0].url, alt: ''
+            .right-block
+              .title
+                .name 
+                  #{ @place.name }
+              .mi-item.address
+                #{ @place.address }
+              = link_to 'Edit', edit_place_path(@place)
+              = link_to 'Delete', @place, method: :delete, data: { confirm: 'Are you sure?'}, class: 'delete'
+          .about
+            .ttl About Place:
+            %p
+              = @place.about

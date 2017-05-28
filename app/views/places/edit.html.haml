@@ -1,0 +1,41 @@
+%section.page
+  .main-edit
+    .edit-block.container
+      = form_for [ @place], html: { id: "basic-info-form"} do |f|
+        .title
+          .name Information
+          .control
+            = f.submit "Accept", class: "accept-btn control-inp", id: "basic-info-accept"
+        .basic-info
+          - if @place.avatars[0].blank?
+            .logo-comp
+              = f.file_field :avatars, multiple: true, accept: "image/*", id: "img-input"
+              = image_tag "", alt: "", id: "comp-image", class: "hide"
+          - else
+            .logo-comp.with-image
+              = f.file_field :avatars, multiple: true, accept: "image/*", id: "img-input"
+              = image_tag @place.avatars[0].url, alt: "", id: "comp-image"
+          .info-comp
+            .info-item
+              %label.info-lbl{:for => "comp-name"} Place name:
+              = f.text_field :name, class: "info-inp", placeholder: "Place name"
+            .info-item
+              %label.info-lbl{:for => "geo-filter-inp"} Address:
+              = f.text_field :address, class: "info-inp", id: "geo-filter-inp", autocomplete: "off", placeholder: "Address"
+            .info-item
+              %label.info-lbl{:for => "comp-lat"} Latitude:
+              = f.text_field :lat, class: "info-inp", autocomplete: "off", placeholder: "Latitude"
+            .info-item
+              %label.info-lbl{:for => "comp-lng"} Longitude:
+              = f.text_field :lng, class: "info-inp", autocomplete: "off", placeholder: "Longitude"
+          .locate-comp
+            #place-map.map
+        .description
+          .desc-ttl
+            %p
+              Text About
+              = succeed "place" do
+                %br/
+          = f.text_area :about, id: "comp-desc", placeholder: "Type something"
+        .control-bott
+          %input.accept-btn.control-inp{:type => "submit", :value => "Accept"}/

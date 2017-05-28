@@ -13,6 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tether
 //= require bootstrap.min
+//= require jquery-ui/autocomplete
 //= require main
-//= require_tree .
+//= require app.init
+//= require app.gmaps
+//= require page.home
+//= require places

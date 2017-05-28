@@ -1,0 +1,36 @@
+@import '_variables';
+
+.ui-autocomplete{
+  background-color: #fff;
+  border: 1px solid $main-background;
+  z-index: 5;
+  max-width: 500px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  li {
+    font-family: $primary-font-reg;
+    display: block;
+    font-size: 14px;
+    padding: 12px 35px 12px 36px;
+    cursor: pointer;
+    position: relative;
+    &.ui-state-focus{
+      background: white;
+      border-color: white;
+      color: #ffd42d;
+    }
+    &.ui-autocomplete-category {
+      border: none !important;
+      font-family: $primary-font-semibold;
+      padding-left: 10px;
+      font-size: 1em;
+      background-color: $main-background;
+      font-weight: bold;
+    }
+  }
+}

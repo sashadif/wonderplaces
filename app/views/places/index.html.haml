@@ -1,0 +1,30 @@
+%section.page
+  .serv-list-tabs
+    #services-tab.tab-item.services
+      %form#fiter-form.filter-area{:action => "#"}
+        .filter-line
+          .filter-item
+            .stansion-numb
+              %span.stn-count 6
+              Places
+          .filter-item
+            %select#filter-all{:name => "filter-all"}
+              %option{:selected => "selected"} Filter All
+              %option Category 1
+              %option Category 2
+              %option Category 3
+              %option Category 4
+              %option Category 5
+              %option Category 6
+      .stans-list
+        - @places.each do |pl|
+          #pl-item.stans-item.clearfix{ data: { 'place-id' => pl.id, 'place-lat' => pl.lat, 'place-lng' => pl.lng  } }
+            .stans-photo
+              = image_tag pl.avatars[0].url, alt: pl.name
+            .stans-info
+              .station-nm
+                .title 
+                  =link_to pl.name, place_path(pl)
+              .address #{ pl.address }
+    #map-tab.tab-item.serv-map
+      #places-map.map

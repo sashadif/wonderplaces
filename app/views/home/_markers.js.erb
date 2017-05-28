@@ -1,0 +1,14 @@
+var window.markers = [];
+<% Place.find_each do |place| %>
+  $(document).ready(function(){      
+    window.markers.push([ new google.maps.LatLng(#{place.lat},#{place.lng}), "#{place.name}"]);
+  });
+<% end %>
+$.each(window.markers,function(i,e){
+  var marker = new google.maps.Marker({
+    position: e[0],
+    title: e[1],            
+    map: map
+  });
+});
+  

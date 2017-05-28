@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
     def index
-        render 'index.html.haml'
+        @places = Place.filter_with_params(params[:term]) if params[:term].present?
+        respond_to do |format|
+            format.html {render 'index.html.haml'}
+            format.json {render 'index.json.builder'}
+        end
     end
     
     def about; end

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
   
   devise_for :users
+  
   root 'home#index'
-
+  
+  resources :places
+  resources :categories
+  
 end
