@@ -1,0 +1,24 @@
+%section.choose-place
+  .container
+    .station-main.container
+      .profile-main
+        .station-info.p-flex-item
+          .main-info.clearfix
+            .logo-block.user
+              = image_tag @user.photo.url, alt: ''
+            .right-block
+              .title
+                .name 
+                  #{ @user.email.split("@")[0] }
+              .stans-list
+                %h6 Wishlist
+                - @user.places.each do |pl|
+                  .stans-item.clearfix
+                    .stans-photo
+                      = image_tag pl.avatars[0].url, alt: pl.name
+                    .stans-info
+                      .station-nm
+                        .title 
+                          =link_to pl.name, place_path(pl)
+                      .address #{ pl.address }
+                      =link_to 'Delete from wishlist',user_place_path(@user,pl),action: :destroy, data: { confirm: 'Are you sure?'}, class: 'delete'

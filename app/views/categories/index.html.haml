@@ -1,0 +1,22 @@
+%section.page
+  .serv-list-tabs
+    #services-tab.tab-item.services
+      %form#fiter-form.filter-area{:action => "#"}
+        .filter-line
+          .filter-item
+            .stansion-numb
+              %span.stn-count #{@count}
+              Categories
+      .stans-list
+        - @categories.each do |cat|
+          .stans-item
+            .stans-info
+              .station-nm
+                .title 
+                  =cat.name
+                -cat.places.each do |pl|
+                  .title 
+                    =pl.name
+                //=link_to pl.name, place_path(pl)
+              %span #{@place_count}
+              Places

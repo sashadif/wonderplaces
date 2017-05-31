@@ -8,10 +8,13 @@
               = image_tag @place.avatars[0].url, alt: ''
             .right-block
               .title
-                .name 
-                  #{ @place.name }
-              .mi-item.address
-                #{ @place.address }
+                .name #{ @place.name }
+              .mi-item.address #{ @place.address }
+              - if @place.category_id != nil
+                .mi-item ##{ Category.find(@place.category_id).name }
+              #add
+                = button_to 'Add to wishlist', {:action => :add_to}, method: :post, class: 'add-btn', :id => '#add-to'
+            -if admin_signed_in?
               = link_to 'Edit', edit_place_path(@place)
               = link_to 'Delete', @place, method: :delete, data: { confirm: 'Are you sure?'}, class: 'delete'
           .about

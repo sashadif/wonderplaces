@@ -13,9 +13,8 @@
       %li.nav-item
         %a.nav-link{:href => "#"} Search
       -if user_signed_in? 
-        %li.nav-item.nav-link 
-          Logged in as
-          %strong= current_user.email
+        %li.nav-item 
+          =link_to current_user.email.split("@")[0], user_path(current_user), class: 'nav-link'
         %li.nav-item
           = link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
         %li.nav-item
@@ -25,6 +24,12 @@
           Logged in as admin
         %li.nav-item
           = link_to 'Workspace',rails_admin.dashboard_path , class: 'nav-link'
+        %li.nav-item
+          = link_to 'DB',rails_admin.dashboard_path , class: 'nav-link'
+        %li.nav-item
+          = link_to 'New place', new_place_path , class: 'nav-link'
+        %li.nav-item
+          = link_to 'New category', new_category_path , class: 'nav-link'
         %li.nav-item
           = link_to "Sign out", destroy_admin_session_path, method: :delete, class: 'nav-link'
       -else

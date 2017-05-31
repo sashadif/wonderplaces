@@ -9,13 +9,9 @@
               Places
           .filter-item
             %select#filter-all{:name => "filter-all"}
-              %option{:selected => "selected"} Filter All
-              %option Category 1
-              %option Category 2
-              %option Category 3
-              %option Category 4
-              %option Category 5
-              %option Category 6
+              %option{:selected => "selected"} Filter All 
+            - Category.all.each do |cat|
+              %option #{cat.name}
       .stans-list
         - @places.each do |pl|
           #pl-item.stans-item.clearfix{ data: { 'place-id' => pl.id, 'place-lat' => pl.lat, 'place-lng' => pl.lng  } }
@@ -26,5 +22,6 @@
                 .title 
                   =link_to pl.name, place_path(pl)
               .address #{ pl.address }
+              .category ##{Category.find(pl.category_id).name}
     #map-tab.tab-item.serv-map
       #places-map.map

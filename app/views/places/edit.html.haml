@@ -1,7 +1,7 @@
 %section.page
   .main-edit
     .edit-block.container
-      = form_for [ @place], html: { id: "basic-info-form"} do |f|
+      = form_for @place, html: { id: "basic-info-form"}  do |f|
         .title
           .name Information
           .control
@@ -21,15 +21,16 @@
               = f.text_field :name, class: "info-inp", placeholder: "Place name"
             .info-item
               %label.info-lbl{:for => "geo-filter-inp"} Address:
-              = f.text_field :address, class: "info-inp", id: "geo-filter-inp", autocomplete: "off", placeholder: "Address"
+              = f.text_field :address, class: "info-inp", autocomplete: "off", placeholder: "Address"
             .info-item
-              %label.info-lbl{:for => "comp-lat"} Latitude:
-              = f.text_field :lat, class: "info-inp", autocomplete: "off", placeholder: "Latitude"
+              %label.info-lbl{:for => "geo-filter-inp"} Latitude:
+              = f.text_field :lat, class: "info-inp",  autocomplete: "off", placeholder: "Latitude"
             .info-item
-              %label.info-lbl{:for => "comp-lng"} Longitude:
-              = f.text_field :lng, class: "info-inp", autocomplete: "off", placeholder: "Longitude"
-          .locate-comp
-            #place-map.map
+              %label.info-lbl{:for => "geo-filter-inp"} Longitude:
+              = f.text_field :lng, class: "info-inp",  autocomplete: "off", placeholder: "Longitude"
+            .info-item
+              %label.info-lbl Category:
+              = f.select :category_id, options_for_select(Category.all.map{|s| [s.name, s.id]},params[:category_id]),{ include_blank: true }
         .description
           .desc-ttl
             %p

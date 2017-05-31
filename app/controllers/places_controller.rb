@@ -1,32 +1,28 @@
 class PlacesController < ApplicationController
+  
   def index
-    if params[:term].present?
-      @places = Place.filter_with(params[:term]) 
-    else
       @places = Place.all
-    end
-   #respond_to do |format|
-     # format.html {render 'index.html.haml'}
-     # format.json {render 'index.json.builder'}
-    #end
   end
   
   def show
-    @place = Place.find(params[:id]) 
+     @place = Place.find(params[:id]) 
   end
   
   def new
+    if admin_signed_in?
       @place = Place.new
       render 'edit'
+    end
   end
 
   def create
-      @place = Place.create(place_params)
-      if @place.save
-        redirect_to place_url(@place)
-      else
-        render 'edit'
-      end
+    @place = Place.create(place_params)
+    if @place.save
+      Category.find(@place.category_id).places << @place 
+      redirect_to place_url(@place)
+    else
+      render 'edit'
+    end
   end
   
   def edit
@@ -35,7 +31,16 @@ class PlacesController < ApplicationController
   
   def update
     @place = Place.find(params[:id])
+    @category_id_old = @place.category_id
+    
     if @place.update(place_params)
+ 
+ #     if @category_id_old!=0 && !Place.all.find(@category_id_old)
+ #      Category.find(Place.find(@category_id_old).category_id).places.delete(@place)
+   #     Category.find(@place.category_id).places << @place 
+  #    else
+        Category.find(@place.category_id).places << @place
+   #   end
       redirect_to place_url(@place)
     else
       render :edit
@@ -48,10 +53,18 @@ class PlacesController < ApplicationController
     redirect_to '/places'
   end
   
+  def add_to
+    @place = Place.find(params[:id])
+    @user_id = current_user
+    @user = User.find(current_user)
+    @user.places << @place
+    @user.save!
+    redirect_to place_path(@place)
+  end
   
   private
   
   def place_params
-      params.require(:place).permit(:name,:category,:address,:about,:lat,:lng,{avatars: []})
+      params.require(:place).permit(:name,:category_id,:address,:about,:lat,:lng,{avatars: []})
   end
 end

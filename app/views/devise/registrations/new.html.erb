@@ -5,6 +5,12 @@
       <%= devise_error_messages! %>
     
       <div class="form-field">
+        <%= f.label :photo,class: "label" %><br />
+        <%= f.file_field :photo, class:"field"%><br />
+        <%= f.hidden_field :photo_cache, class:"field"%>
+      </div>
+    
+      <div class="form-field">
         <%= f.label :email,class: "label" %><br />
         <%= f.email_field :email, autofocus: true , class:"field"%>
       </div>

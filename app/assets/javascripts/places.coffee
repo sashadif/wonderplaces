@@ -21,6 +21,10 @@ ready = ->
     gmaps.renderItems data
     $('.stans-item').hover enter_function, leave_function
     return
+  
+  $('#add').click(->
+    alert "Place is added to your wishlist now!")
+
 
   return
 

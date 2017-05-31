@@ -1,0 +1,13 @@
+%section.page
+  .main-edit
+    .edit-block.container
+      = form_for @category, html: { id: "basic-info-form"}  do |f|
+        .title
+          .name Category
+          .control
+            = f.submit "Accept", class: "accept-btn control-inp", id: "basic-info-accept"
+        .basic-info
+          .info-comp
+            .info-item
+              %label.info-lbl{:for => "comp-name"} Category name:
+              = f.text_field :name, class: "info-inp", placeholder: "Category name"
